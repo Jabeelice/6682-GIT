@@ -1,0 +1,44 @@
+{
+  "highRiskStatisticMethod": "PERCENT",
+  "highRiskStatisticPeriod": "WEEK",
+  "highRiskThreshold": 3,
+  "node": "Jabee_Linux",
+  "owner": "Jabee",
+  "priority": "0",
+  "processingType": "TASK",
+  "serverNodeType": "LINUX",
+  "statisticMethod": "MEDIAN",
+  "statisticPeriod": "ALL",
+  "taskType": "SH",
+  "customFieldValues": {
+  },
+  "processingCommand": {
+    "script": "echo \"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<bookstore>\n\n<book>\n  <title lang=\"en\">Harry Potter<\/title>\n  <price>29.99<\/price>\n<\/book>\n\n<book>\n  <title lang=\"en\">Learning XML<\/title>\n  <price>39.95<\/price>\n<\/book>\n\n<\/bookstore>\""
+  },
+  "designParameters": 
+  [
+    {
+      "editorType": "OUTPUT",
+      "name": "GET_BOOK_1",
+      "outputFormat": "XML",
+      "title": "extract book 1",
+      "outputDefinition": {
+        "dataPath": "/bookstore/book[1]\t",
+        "outputLevel": "SELF"
+      }
+    },
+    {
+      "editorType": "OUTPUT",
+      "name": "TEXT_SEARCH",
+      "outputFormat": "TEXT",
+      "title": "search for book",
+      "outputDefinition": {
+        "linePattern": "book",
+        "linePatternOperator": "CONTAINS",
+        "outputLevel": "SELF",
+        "valueEndOperator": "LINE_END",
+        "valueStartOperator": "LINE_START"
+      }
+    }
+  ]
+}
